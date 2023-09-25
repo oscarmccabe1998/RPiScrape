@@ -1,10 +1,10 @@
-#Usage 
-##Virtual Environment
-###Create a virtual environment
+# Usage 
+## Virtual Environment
+### Create a virtual environment
 python3 -m venv .
-###Start Virtual Environment
+### Start Virtual Environment
 source bin/activate
-###install dependancies
+### install dependancies
 pip3 install -r req.txt
-##Run the script 
+## Run the script 
 python3 main.py
