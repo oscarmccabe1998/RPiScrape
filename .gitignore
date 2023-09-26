@@ -37,6 +37,13 @@ MANIFEST
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
+pip
+pip3
+pip3.11
+python
+python3
+python3.11
+pyenv.cfg
 
 # Unit test / coverage reports
 htmlcov/
