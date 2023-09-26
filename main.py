@@ -1,13 +1,10 @@
 from selenium import webdriver
 from bs4 import BeautifulSoup
-import time
-
 
 def main ():
     driver = webdriver.Firefox()
-    url = "https://thepihut.com/collections/raspberry-pi-store"
+    #This example makes use of Firefox and the geckodriver 
     driver.get('https://thepihut.com/collections/raspberry-pi-store')
-    #time.sleep(1)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     Products = soup.find_all('div', attrs={'product-item__info product-item__info--with-button product-item--no-padding'})
     for item in Products:
