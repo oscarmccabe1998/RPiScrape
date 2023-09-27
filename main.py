@@ -1,5 +1,6 @@
 from selenium import webdriver
 from bs4 import BeautifulSoup
+from db import initDBLogic
 
 class ProductInfo:
     def __init__(self, item):
@@ -10,6 +11,7 @@ class ProductInfo:
         self.price = self.price.strip()
         self.availability = self.getProductAvailability('span', {'class':'loader-button__text'})
         self.printRes()
+        initDBLogic(self)
 
     #Checks if an item is available through expected error when item is not available 
     #if the tag has text within it then it is available, otherwise it's out of stock 
