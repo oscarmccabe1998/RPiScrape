@@ -1,6 +1,6 @@
 from selenium import webdriver
 from bs4 import BeautifulSoup
-from db import initDBLogic
+from DataBaseLogic import initDBLogic
 
 class ProductInfo:
     def __init__(self, item):
