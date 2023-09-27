@@ -1,9 +1,9 @@
 from selenium import webdriver
 from bs4 import BeautifulSoup
-from DataBaseLogic import initDBLogic
+from DataBaseLogic import initDBLogic, ReadFromDB
 
 class ProductInfo:
-    def __init__(self, item):
+    def __init__(self, item, preSavedItems):
         self.item = item
         #Search through item for name and price
         self.name = self.item.find('a', attrs={'class':'product-item-meta__title link--hover'}).string
@@ -11,7 +11,15 @@ class ProductInfo:
         self.price = self.price.strip()
         self.availability = self.getProductAvailability('span', {'class':'loader-button__text'})
         self.printRes()
-        initDBLogic(self)
+        present = False
+        for iter in preSavedItems:
+            if self.name == iter[0]:
+                present = True
+        if present == True:
+            print("pass")
+        else:
+            initDBLogic(self)
+           
 
     #Checks if an item is available through expected error when item is not available 
     #if the tag has text within it then it is available, otherwise it's out of stock 
@@ -29,6 +37,7 @@ class ProductInfo:
         print("")
 
 def main ():
+    preSavedItems = ReadFromDB()
     driver = webdriver.Firefox()
     #This example makes use of Firefox and the geckodriver 
     #initial url to used to get data 
@@ -37,7 +46,7 @@ def main ():
     #find HTML that contains all needed information on the products 
     Products = soup.find_all('div', attrs={'product-item__info product-item__info--with-button product-item--no-padding'})
     for item in Products:
-        currentItem = ProductInfo(item=item)
+        currentItem = ProductInfo(item, preSavedItems.preSavedItems)
     driver.quit()
 
 if __name__ == '__main__':
