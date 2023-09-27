@@ -24,4 +24,4 @@ def create_db_connection(host_name, user_name, user_password, db_name):     #fun
     return connection
 
 if __name__ == "__main__":
-    create_db_connection(host, uname, pwd, db_name)
+    create_db_connection(host, uname, pwd, db_name) 
