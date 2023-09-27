@@ -9,6 +9,11 @@ __pycache__/
 # database credentials
 db.py
 
+#venv stuff
+lib64
+pyvenv.cfg
+
+
 # Distribution / packaging
 .Python
 build/
