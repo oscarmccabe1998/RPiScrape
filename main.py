@@ -1,6 +1,6 @@
 from selenium import webdriver
 from bs4 import BeautifulSoup
-from DataBaseLogic import initDBLogic, ReadFromDB
+from DataBaseLogic import initDBLogic, ReadFromDB, UpdateProduct
 
 class ProductInfo:
     def __init__(self, item, preSavedItems):
@@ -16,7 +16,8 @@ class ProductInfo:
             if self.name == iter[0]:
                 present = True
         if present == True:
-            print("pass")
+            print("Update")
+            UpdateProduct(self)
         else:
             initDBLogic(self)
            

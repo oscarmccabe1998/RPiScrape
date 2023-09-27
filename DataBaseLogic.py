@@ -28,12 +28,19 @@ class DatabaseCred():
 
 class UploadToDB():
     def __init__(self, Product):
+        self.now = datetime.now()
+        self.formattedDate = self.now.strftime('%Y-%m-%d %H:%M:%S')
         self.Product = Product
         self.credentials = DatabaseCred()
         self.connection = self.credentials.connection
-        self.query = "INSERT INTO ProgSocTest (Name, Price, Availability) VALUES (%s, %s, %s);"
-        self.data = (Product.name, Product.price, Product.availability)
+        self.query = self.getQuery()
+        self.data = self.getData()
         self.executeQuery()
+
+    def getQuery(self):
+        return "INSERT INTO ProgSocTest (Name, Price, Availability, LastChecked) VALUES (%s, %s, %s, %s);"
+    def getData(self):
+        return (self.Product.name, self.Product.price, self.Product.availability, self.formattedDate)
 
     def executeQuery(self):
         cursor = self.connection.cursor()
@@ -45,6 +52,14 @@ class UploadToDB():
             print(f"Error: '{err}'")
         cursor.close()
 
+class UpdateToDB(UploadToDB):
+    def __init__(self, Product):
+        super().__init__(Product)
+    def getQuery(self):
+        return "UPDATE ProgSocTest SET Price = %s, Availability = %s, LastChecked = %s WHERE Name = %s"
+    def getData(self):
+        return(self.Product.price, self.Product.availability, self.formattedDate,self.Product.name)
+
 class ReadFromDB():
     def __init__(self):
         self.credentials = DatabaseCred()
@@ -54,7 +69,7 @@ class ReadFromDB():
     def executeQuery(self):
         cursor = self.connection.cursor()
         try:
-            cursor.execute("SELECT * FROM ProgSocTest")
+            cursor.execute("SELECT Name FROM ProgSocTest")
             getAllresult = cursor.fetchall()
             print(getAllresult)
             return getAllresult
@@ -64,8 +79,12 @@ class ReadFromDB():
 def initDBLogic(Product):
     UploadToDB(Product)
 
+def UpdateProduct(Product):
+    UpdateToDB(Product)
+
 if __name__ == '__main__':
     ReadFromDB()
+
 
 
 
