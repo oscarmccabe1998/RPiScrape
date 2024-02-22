@@ -1,3 +1,6 @@
+# Scraping Logic 
+## Found in the scraping directory 
+cd scraping
 # Usage 
 ## Virtual Environment
 ### Create a virtual environment
