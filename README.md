@@ -16,8 +16,16 @@ pip3 install -r req.txt
 python3 main.py
 
 ## Docker Usage 
-### Build Dockerfile
-sudo docker build -t rpiscrape .
+### Build Dockerfile's
+### Create Docker Network
+sudo docker network create rpi-scrape-network
+#### Build Database Image
+sudo docker build -t rpidatabase database/
+#### Run Database Image
+sudo docker run -d --name rpi-scrape --network rpi-scrape-network -p 3306:3306 rpidatabase
+Once this is done use the docker inspect command to get the ip address on the network and update the DatabaseLogic.py script
+#### Build WebScraperImage
+sudo docker build -t rpiscrape scraping/
+#### Run Scraper Image  
+sudo docker run rpiscrape --name python-scraper --network rpi-scrape-network
 
-### Run Docker Image 
-sudo docker run rpiscrape

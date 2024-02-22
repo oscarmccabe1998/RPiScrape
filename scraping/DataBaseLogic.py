@@ -6,10 +6,10 @@ from mysql.connector import Error
 
 class DatabaseCred():
     def __init__(self):
-        self.host = "INSERT HOST NAME HERE"
-        self.uname = "INSERT USER NAME HERE"
-        self.pwd = "INSERT PASSWORD HERE"
-        self.db_name = "INSERT DATABASE NAME HERE"
+        self.host = "172.18.0.2"
+        self.uname = "ProgSoc"
+        self.pwd = "ProgSoc"
+        self.db_name = "ProgSocTest"
         self.connection = self.create_db_connection()
 
     def create_db_connection(self):
