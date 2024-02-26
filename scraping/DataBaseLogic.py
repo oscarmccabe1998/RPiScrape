@@ -6,7 +6,7 @@ from mysql.connector import Error
 
 class DatabaseCred():
     def __init__(self):
-        self.host = "172.18.0.2"
+        self.host = "rpi-scrape"
         self.uname = "ProgSoc"
         self.pwd = "ProgSoc"
         self.db_name = "ProgSocTest"

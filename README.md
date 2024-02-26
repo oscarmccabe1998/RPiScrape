@@ -28,5 +28,5 @@ Once this is done use the docker inspect command to get the ip address on the ne
 #### Build WebScraperImage
 sudo docker build -t rpiscrape scraping/
 #### Run Scraper Image  
-sudo docker run rpiscrape --name python-scraper --network rpi-scrape-network
+sudo docker run --name python-scraper --network rpi-scrape-network rpiscrape
 
