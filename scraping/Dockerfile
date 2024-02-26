@@ -10,6 +10,7 @@ RUN curl -s -L curl -s https://github.com/mozilla/geckodriver/releases/download/
  
 RUN mv geckodriver /usr/local/bin
 RUN cd /usr/local/bin && chmod +x geckodriver; cd
-
+RUN export PATH=$PATH:/usr/local/bin/geckodriver
+#RUN source .bashrc
 
 ENTRYPOINT [ "python3", "main.py" ]
