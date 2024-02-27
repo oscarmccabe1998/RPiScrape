@@ -1,4 +1,4 @@
-from selenium import webdriver
+import requests
 from bs4 import BeautifulSoup
 from DataBaseLogic import initDBLogic, ReadFromDB, UpdateProduct
 
@@ -39,11 +39,12 @@ class ProductInfo:
 
 def main ():
     preSavedItems = ReadFromDB()
-    driver = webdriver.Firefox()
+    #driver = webdriver.Firefox()
     #This example makes use of Firefox and the geckodriver 
     #initial url to used to get data 
-    driver.get('https://thepihut.com/collections/raspberry-pi-store') 
-    soup = BeautifulSoup(driver.page_source, 'html.parser')
+    targetURL = 'https://thepihut.com/collections/raspberry-pi-store'
+    response = requests.get(targetURL)
+    soup = BeautifulSoup(response.text, 'html.parser')
     #find HTML that contains all needed information on the products 
     Products = soup.find_all('div', attrs={'product-item__info product-item__info--with-button product-item--no-padding'})
     for item in Products:
