@@ -29,7 +29,7 @@ class DatabaseCred():
 
 class UploadToDB():
     def __init__(self, Product):
-        self.now = datetime.now()
+        self.now = datetime.datetime.now()
         self.formattedDate = self.now.strftime('%Y-%m-%d %H:%M:%S')
         self.Product = Product
         self.credentials = DatabaseCred()

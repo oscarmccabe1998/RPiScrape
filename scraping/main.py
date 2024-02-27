@@ -49,7 +49,7 @@ def main ():
     Products = soup.find_all('div', attrs={'product-item__info product-item__info--with-button product-item--no-padding'})
     for item in Products:
         currentItem = ProductInfo(item, preSavedItems.preSavedItems)
-    driver.quit()
+    #driver.quit()
 
 if __name__ == '__main__':
     main()
