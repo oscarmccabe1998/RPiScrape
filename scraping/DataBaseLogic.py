@@ -1,5 +1,6 @@
 import mysql.connector
 from mysql.connector import Error
+import datetime
 
 # Artile from free code camp was used to implement database connection
 # The article can be found at https://www.freecodecamp.org/news/connect-python-with-sql/
