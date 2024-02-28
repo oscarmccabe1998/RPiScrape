@@ -1,7 +1,7 @@
-FROM debian
+FROM ubuntu
 
 RUN apt-get update && apt-get install && apt-get install curl -y
-RUN apt-get install firefox-esr -y
+RUN apt-get install firefox -y
 RUN apt-get install -y python3
 RUN apt-get install -y python3-pip
 COPY . . 
