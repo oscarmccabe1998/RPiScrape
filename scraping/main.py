@@ -39,7 +39,9 @@ class ProductInfo:
 
 def main ():
     preSavedItems = ReadFromDB()
-    driver = webdriver.Firefox()
+    options = Options()
+    options.headless = True
+    driver = webdriver.Firefox(options=options)
     #This example makes use of Firefox and the geckodriver 
     #initial url to used to get data 
     targetURL = 'https://thepihut.com/collections/raspberry-pi-store'
