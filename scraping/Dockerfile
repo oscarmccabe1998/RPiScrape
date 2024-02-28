@@ -14,8 +14,7 @@ RUN wget -O /tmp/geckodriver.tar.gz https://github.com/mozilla/geckodriver/relea
         && rm /tmp/geckodriver.tar.gz
 
 WORKDIR /app
-COPY req.txt .
+COPY . .
 RUN pip3 install --no-cache-dir -r req.txt
-COPY scraper.py .
 ENV DISPLAY=:99
 CMD ["python3", "main.py"]
